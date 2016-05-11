@@ -956,7 +956,7 @@ begin
                 ipb_write_reg_data(6)(23 downto 0) <= x"03d090"; -- default DAV timeout of 10ms
                 
                 for I in 0 to (number_of_optohybrids - 1) loop
-                    ipb_write_reg_data((I+1)*16 + 3)(23 downto 0) <= x"000c35"; -- default DAV timeout of 10ms
+                    ipb_write_reg_data((I+1)*16 + 3)(23 downto 0) <= x"0030d4"; -- default DAV timeout of 10ms
                 end loop;
             else         
                 case ipb_state is
