@@ -51,8 +51,9 @@ port(
     rx_n_i          : in std_logic_vector(3 downto 0);
     rx_p_i          : in std_logic_vector(3 downto 0);
     tx_n_o          : out std_logic_vector(3 downto 0);
-    tx_p_o          : out std_logic_vector(3 downto 0)
+    tx_p_o          : out std_logic_vector(3 downto 0);
     
+    rx_polarity_i   : in std_logic_vector(3 downto 0)
 );
 end gtx;
 
@@ -99,7 +100,8 @@ begin
 		rx_n_i          => rx_n_i(3 downto 0),
 		rx_p_i          => rx_p_i(3 downto 0),
 		tx_n_o          => tx_n_o(3 downto 0),
-		tx_p_o          => tx_p_o(3 downto 0)
+		tx_p_o          => tx_p_o(3 downto 0),
+        rx_polarity_i   => rx_polarity_i(3 downto 0)
 	);  
    
     --================--

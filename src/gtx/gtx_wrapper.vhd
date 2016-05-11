@@ -41,8 +41,9 @@ port(
     rx_n_i          : in std_logic_vector(3 downto 0);
     rx_p_i          : in std_logic_vector(3 downto 0);
     tx_n_o          : out std_logic_vector(3 downto 0);
-    tx_p_o          : out std_logic_vector(3 downto 0)
+    tx_p_o          : out std_logic_vector(3 downto 0);
     
+    rx_polarity_i   : in std_logic_vector(3 downto 0)
 );
 end gtx_wrapper;
 
@@ -103,6 +104,7 @@ begin
         GTX0_PLLRXRESET_IN          => reset_i,
         GTX0_RXPLLLKDET_OUT         => open,
         GTX0_RXRESETDONE_OUT        => open,
+        GTX0_RXPOLARITY_IN          => rx_polarity_i(0),
         GTX0_TXCHARISK_IN           => tx_kchar_i(1 downto 0),
         GTX0_TXDATA_IN              => tx_data_i(15 downto 0),
         GTX0_TXOUTCLK_OUT           => usr_clk,
@@ -128,6 +130,7 @@ begin
         GTX1_PLLRXRESET_IN          => reset_i,
         GTX1_RXPLLLKDET_OUT         => open,
         GTX1_RXRESETDONE_OUT        => open,
+        GTX1_RXPOLARITY_IN          => rx_polarity_i(1),        
         GTX1_TXCHARISK_IN           => tx_kchar_i(3 downto 2),
         GTX1_TXDATA_IN              => tx_data_i(31 downto 16),
         GTX1_TXOUTCLK_OUT           => open,
@@ -153,6 +156,7 @@ begin
         GTX2_PLLRXRESET_IN          => reset_i,
         GTX2_RXPLLLKDET_OUT         => open,
         GTX2_RXRESETDONE_OUT        => open,
+        GTX2_RXPOLARITY_IN          => rx_polarity_i(2),        
         GTX2_TXCHARISK_IN           => tx_kchar_i(5 downto 4),
         GTX2_TXDATA_IN              => tx_data_i(47 downto 32),
         GTX2_TXOUTCLK_OUT           => open,
@@ -178,6 +182,7 @@ begin
         GTX3_PLLRXRESET_IN          => reset_i,
         GTX3_RXPLLLKDET_OUT         => open,
         GTX3_RXRESETDONE_OUT        => open,
+        GTX3_RXPOLARITY_IN          => rx_polarity_i(3),        
         GTX3_TXCHARISK_IN           => tx_kchar_i(7 downto 6),
         GTX3_TXDATA_IN              => tx_data_i(63 downto 48),
         GTX3_TXOUTCLK_OUT           => open,

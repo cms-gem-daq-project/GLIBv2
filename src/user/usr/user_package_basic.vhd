@@ -21,7 +21,7 @@ package user_package is
 	
     --=== ipb slaves =============--
     
-	constant number_of_ipb_slaves		: positive := 8;
+	constant number_of_ipb_slaves		: positive := 9;
    
 	constant ipb_gtx_forward_0          : integer  := 0;
 	constant ipb_gtx_forward_1          : integer  := 1;
@@ -31,6 +31,7 @@ package user_package is
     constant ipb_daq                    : integer  := 5;
     constant ipb_trigger                : integer  := 6;
     constant ipb_ttc                    : integer  := 7;
+    constant ipb_control                : integer  := 8;
 
     --=== gtx links =============--
     

@@ -203,10 +203,11 @@ architecture user_logic_arch of user_logic is
 
     --== GTX signals ==--
     
-    signal gtx_usr_clk  : std_logic;
-    signal gtx_tk_error : std_logic_vector(1 downto 0);
-    signal gtx_tr_error : std_logic_vector(1 downto 0);
-    signal gtx_evt_rcvd : std_logic_vector(1 downto 0);
+    signal gtx_usr_clk      : std_logic;
+    signal gtx_tk_error     : std_logic_vector(1 downto 0);
+    signal gtx_tr_error     : std_logic_vector(1 downto 0);
+    signal gtx_evt_rcvd     : std_logic_vector(1 downto 0);
+    signal rx_polarity      : std_logic_vector(3 downto 0);
 
     --== TTC signals ==--
 
@@ -234,6 +235,7 @@ architecture user_logic_arch of user_logic is
     signal trig_data_links      : trig_link_array_t(0 to number_of_optohybrids - 1);
     
     signal sbit_rate            : unsigned(31 downto 0) := (others => '0');
+    signal sbit_count           : unsigned(31 downto 0) := (others => '0');
     
 begin
     
@@ -274,7 +276,8 @@ begin
 		tx_n_o          => sfp_tx_n(1 to 4),
 		tx_p_o          => sfp_tx_p(1 to 4),
         tk_data_links_o => tk_data_links,
-        trig_data_links_o => trig_data_links
+        trig_data_links_o => trig_data_links,
+        rx_polarity_i   => rx_polarity
 	);
     
     --================================--
@@ -395,6 +398,7 @@ begin
         variable sbit_led_countdown  : integer := 0;
         variable sbit_rate_countdown : integer := 0;
         variable valid_sbit : std_logic;
+        variable cluster_count : std_logic_vector(3 downto 0);
     begin
         if (rising_edge(tk_data_links(0).clk)) then
             
@@ -417,13 +421,14 @@ begin
             
             -- calculate the rate
             if (sbit_rate_countdown > 0) then
-                if (valid_sbit = '1') then
-                    sbit_rate <= sbit_rate + 1;
+                if ((valid_sbit = '1') and (sbit_count /= x"ffffffff")) then
+                    sbit_count <= sbit_count + 1;
                 end if;
                 sbit_rate_countdown := sbit_rate_countdown - 1;
             else
-                sbit_rate <= (others => '0');
-                sbit_rate_countdown := 1_600_000_000;
+                sbit_count <= (others => '0');
+                sbit_rate <= sbit_count;
+                sbit_rate_countdown := 160_000_000;
             end if;
             
             -- led state
@@ -453,7 +458,22 @@ begin
 		vfat2_t1_i      => vfat2_t1,
 		gtx_tk_error_i  => gtx_tk_error,
 		gtx_tr_error_i  => gtx_tr_error,
-        gtx_evt_rcvd_i  => gtx_evt_rcvd
+      gtx_evt_rcvd_i  => gtx_evt_rcvd
 	);
+
+    --==========--
+    -- Control  --
+    --==========--
+    
+    system_control_inst : entity work.control
+    port map(
+        ipb_clk_i           => ipb_clk_i,
+        reset_i             => reset_i,
+    
+        ipb_mosi_i          => ipb_mosi_i(ipb_control),
+        ipb_miso_o          => ipb_miso(ipb_control),
+    
+        tk_rx_polarity_o    => rx_polarity
+    );
     
 end user_logic_arch;

@@ -104,6 +104,8 @@ port
     GTX0_PLLRXRESET_IN                      : in   std_logic;
     GTX0_RXPLLLKDET_OUT                     : out  std_logic;
     GTX0_RXRESETDONE_OUT                    : out  std_logic;
+    ----------------- Receive Ports - RX Polarity Control Ports ----------------
+    GTX0_RXPOLARITY_IN                      : in std_logic; 
     ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
     GTX0_TXCHARISK_IN                       : in   std_logic_vector(1 downto 0);
     ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -144,6 +146,8 @@ port
     GTX1_PLLRXRESET_IN                      : in   std_logic;
     GTX1_RXPLLLKDET_OUT                     : out  std_logic;
     GTX1_RXRESETDONE_OUT                    : out  std_logic;
+    ----------------- Receive Ports - RX Polarity Control Ports ----------------
+    GTX1_RXPOLARITY_IN                      : in std_logic; 
     ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
     GTX1_TXCHARISK_IN                       : in   std_logic_vector(1 downto 0);
     ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -184,6 +188,8 @@ port
     GTX2_PLLRXRESET_IN                      : in   std_logic;
     GTX2_RXPLLLKDET_OUT                     : out  std_logic;
     GTX2_RXRESETDONE_OUT                    : out  std_logic;
+    ----------------- Receive Ports - RX Polarity Control Ports ----------------
+    GTX2_RXPOLARITY_IN                      : in std_logic; 
     ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
     GTX2_TXCHARISK_IN                       : in   std_logic_vector(1 downto 0);
     ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -224,6 +230,8 @@ port
     GTX3_PLLRXRESET_IN                      : in   std_logic;
     GTX3_RXPLLLKDET_OUT                     : out  std_logic;
     GTX3_RXRESETDONE_OUT                    : out  std_logic;
+    ----------------- Receive Ports - RX Polarity Control Ports ----------------
+    GTX3_RXPOLARITY_IN                      : in std_logic; 
     ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
     GTX3_TXCHARISK_IN                       : in   std_logic_vector(1 downto 0);
     ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -304,6 +312,8 @@ port
     PLLRXRESET_IN                           : in   std_logic;
     RXPLLLKDET_OUT                          : out  std_logic;
     RXRESETDONE_OUT                         : out  std_logic;
+    ----------------- Receive Ports - RX Polarity Control Ports ----------------
+    RXPOLARITY_IN                           : in std_logic; 
     ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
     TXCHARISK_IN                            : in   std_logic_vector(1 downto 0);
     ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -382,6 +392,8 @@ begin
         PLLRXRESET_IN                   =>      GTX0_PLLRXRESET_IN,
         RXPLLLKDET_OUT                  =>      GTX0_RXPLLLKDET_OUT,
         RXRESETDONE_OUT                 =>      GTX0_RXRESETDONE_OUT,
+        ----------------- Receive Ports - RX Polarity Control Ports ----------------
+        RXPOLARITY_IN                   =>      GTX0_RXPOLARITY_IN,
         ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
         TXCHARISK_IN                    =>      GTX0_TXCHARISK_IN,
         ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -440,6 +452,8 @@ begin
         PLLRXRESET_IN                   =>      GTX1_PLLRXRESET_IN,
         RXPLLLKDET_OUT                  =>      GTX1_RXPLLLKDET_OUT,
         RXRESETDONE_OUT                 =>      GTX1_RXRESETDONE_OUT,
+        ----------------- Receive Ports - RX Polarity Control Ports ----------------
+        RXPOLARITY_IN                   =>      GTX1_RXPOLARITY_IN,
         ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
         TXCHARISK_IN                    =>      GTX1_TXCHARISK_IN,
         ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -498,6 +512,8 @@ begin
         PLLRXRESET_IN                   =>      GTX2_PLLRXRESET_IN,
         RXPLLLKDET_OUT                  =>      GTX2_RXPLLLKDET_OUT,
         RXRESETDONE_OUT                 =>      GTX2_RXRESETDONE_OUT,
+        ----------------- Receive Ports - RX Polarity Control Ports ----------------
+        RXPOLARITY_IN                   =>      GTX2_RXPOLARITY_IN,
         ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
         TXCHARISK_IN                    =>      GTX2_TXCHARISK_IN,
         ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -556,6 +572,8 @@ begin
         PLLRXRESET_IN                   =>      GTX3_PLLRXRESET_IN,
         RXPLLLKDET_OUT                  =>      GTX3_RXPLLLKDET_OUT,
         RXRESETDONE_OUT                 =>      GTX3_RXRESETDONE_OUT,
+        ----------------- Receive Ports - RX Polarity Control Ports ----------------
+        RXPOLARITY_IN                   =>      GTX3_RXPOLARITY_IN,
         ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
         TXCHARISK_IN                    =>      GTX3_TXCHARISK_IN,
         ------------------ Transmit Ports - TX Data Path interface -----------------

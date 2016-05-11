@@ -103,6 +103,8 @@ port
     PLLRXRESET_IN                           : in   std_logic;
     RXPLLLKDET_OUT                          : out  std_logic;
     RXRESETDONE_OUT                         : out  std_logic;
+    ----------------- Receive Ports - RX Polarity Control Ports ----------------
+    RXPOLARITY_IN                           : in std_logic;
     ---------------- Transmit Ports - 8b10b Encoder Control Ports --------------
     TXCHARISK_IN                            : in   std_logic_vector(1 downto 0);
     ------------------ Transmit Ports - TX Data Path interface -----------------
@@ -514,7 +516,7 @@ begin
         PHYSTATUS                       =>      open,
         RXVALID                         =>      open,
         ----------------- Receive Ports - RX Polarity Control Ports ----------------
-        RXPOLARITY                      =>      tied_to_ground_i,
+        RXPOLARITY                      =>      RXPOLARITY_IN,
         --------------------- Receive Ports - RX Ports for SATA --------------------
         COMINITDET                      =>      open,
         COMSASDET                       =>      open,
