@@ -119,7 +119,9 @@ port
     MGTREFCLKTX_IN                          : in   std_logic_vector(1 downto 0);
     PLLTXRESET_IN                           : in   std_logic;
     TXPLLLKDET_OUT                          : out  std_logic;
-    TXRESETDONE_OUT                         : out  std_logic
+    TXRESETDONE_OUT                         : out  std_logic;
+    -------------------- Transmit Ports - TX Polarity Control ------------------
+    TXPOLARITY_IN                           : in std_logic
 
 
 );
@@ -596,7 +598,7 @@ begin
         TXENPRBSTST                     =>      tied_to_ground_vec_i(2 downto 0),
         TXPRBSFORCEERR                  =>      tied_to_ground_i,
         -------------------- Transmit Ports - TX Polarity Control ------------------
-        TXPOLARITY                      =>      tied_to_ground_i,
+        TXPOLARITY                      =>      TXPOLARITY_IN,
         ----------------- Transmit Ports - TX Ports for PCI Express ----------------
         TXDEEMPH                        =>      tied_to_ground_i,
         TXDETECTRX                      =>      tied_to_ground_i,

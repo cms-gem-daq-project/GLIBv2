@@ -208,6 +208,7 @@ architecture user_logic_arch of user_logic is
     signal gtx_tr_error     : std_logic_vector(1 downto 0);
     signal gtx_evt_rcvd     : std_logic_vector(1 downto 0);
     signal rx_polarity      : std_logic_vector(3 downto 0);
+    signal tx_polarity      : std_logic_vector(3 downto 0);
 
     --== TTC signals ==--
 
@@ -277,7 +278,8 @@ begin
 		tx_p_o          => sfp_tx_p(1 to 4),
         tk_data_links_o => tk_data_links,
         trig_data_links_o => trig_data_links,
-        rx_polarity_i   => rx_polarity
+        rx_polarity_i   => rx_polarity,
+        tx_polarity_i   => tx_polarity
 	);
     
     --================================--
@@ -473,7 +475,8 @@ begin
         ipb_mosi_i          => ipb_mosi_i(ipb_control),
         ipb_miso_o          => ipb_miso(ipb_control),
     
-        tk_rx_polarity_o    => rx_polarity
+        tk_rx_polarity_o    => rx_polarity,
+        tk_tx_polarity_o    => tx_polarity
     );
     
 end user_logic_arch;

@@ -43,7 +43,8 @@ port(
     tx_n_o          : out std_logic_vector(3 downto 0);
     tx_p_o          : out std_logic_vector(3 downto 0);
     
-    rx_polarity_i   : in std_logic_vector(3 downto 0)
+    rx_polarity_i   : in std_logic_vector(3 downto 0);
+    tx_polarity_i   : in std_logic_vector(3 downto 0)
 );
 end gtx_wrapper;
 
@@ -113,6 +114,7 @@ begin
         GTX0_TXP_OUT                => tx_p_o(0),
         GTX0_GTXTXRESET_IN          => (mgt_reset or reset_i),
         GTX0_TXRESETDONE_OUT        => open,
+        GTX0_TXPOLARITY_IN          => tx_polarity_i(0),
         --        
         GTX1_RXCHARISK_OUT          => rx_kchar_o(3 downto 2),
         GTX1_RXDISPERR_OUT          => rx_disperr(3 downto 2),
@@ -139,6 +141,7 @@ begin
         GTX1_TXP_OUT                => tx_p_o(1),
         GTX1_GTXTXRESET_IN          => (mgt_reset or reset_i),
         GTX1_TXRESETDONE_OUT        => open,
+        GTX1_TXPOLARITY_IN          => tx_polarity_i(1),
         --        
         GTX2_RXCHARISK_OUT          => rx_kchar_o(5 downto 4),
         GTX2_RXDISPERR_OUT          => rx_disperr(5 downto 4),
@@ -165,6 +168,7 @@ begin
         GTX2_TXP_OUT                => tx_p_o(2),
         GTX2_GTXTXRESET_IN          => (mgt_reset or reset_i),
         GTX2_TXRESETDONE_OUT        => open,
+        GTX2_TXPOLARITY_IN          => tx_polarity_i(2),
         --       
         GTX3_RXCHARISK_OUT          => rx_kchar_o(7 downto 6),
         GTX3_RXDISPERR_OUT          => rx_disperr(7 downto 6),
@@ -190,7 +194,8 @@ begin
         GTX3_TXN_OUT                => tx_n_o(3),
         GTX3_TXP_OUT                => tx_p_o(3),
         GTX3_GTXTXRESET_IN          => (mgt_reset or reset_i),
-        GTX3_TXRESETDONE_OUT        => open
+        GTX3_TXRESETDONE_OUT        => open,
+        GTX3_TXPOLARITY_IN          => tx_polarity_i(3)
     );
     
     --== Control Reset signal ==--

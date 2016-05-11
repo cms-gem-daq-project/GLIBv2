@@ -118,6 +118,8 @@ port
     ----------------------- Transmit Ports - TX PLL Ports ----------------------
     GTX0_GTXTXRESET_IN                      : in   std_logic;
     GTX0_TXRESETDONE_OUT                    : out  std_logic;
+    -------------------- Transmit Ports - TX Polarity Control ------------------
+    GTX0_TXPOLARITY_IN                      : in std_logic;
 
     
     
@@ -160,6 +162,8 @@ port
     ----------------------- Transmit Ports - TX PLL Ports ----------------------
     GTX1_GTXTXRESET_IN                      : in   std_logic;
     GTX1_TXRESETDONE_OUT                    : out  std_logic;
+    -------------------- Transmit Ports - TX Polarity Control ------------------
+    GTX1_TXPOLARITY_IN                      : in std_logic;
 
     
     
@@ -202,6 +206,8 @@ port
     ----------------------- Transmit Ports - TX PLL Ports ----------------------
     GTX2_GTXTXRESET_IN                      : in   std_logic;
     GTX2_TXRESETDONE_OUT                    : out  std_logic;
+    -------------------- Transmit Ports - TX Polarity Control ------------------
+    GTX2_TXPOLARITY_IN                      : in std_logic;
 
     
     
@@ -243,7 +249,9 @@ port
     GTX3_TXP_OUT                            : out  std_logic;
     ----------------------- Transmit Ports - TX PLL Ports ----------------------
     GTX3_GTXTXRESET_IN                      : in   std_logic;
-    GTX3_TXRESETDONE_OUT                    : out  std_logic
+    GTX3_TXRESETDONE_OUT                    : out  std_logic;
+    -------------------- Transmit Ports - TX Polarity Control ------------------
+    GTX3_TXPOLARITY_IN                      : in std_logic
 
     
 );
@@ -328,7 +336,9 @@ port
     MGTREFCLKTX_IN                          : in   std_logic_vector(1 downto 0);
     PLLTXRESET_IN                           : in   std_logic;
     TXPLLLKDET_OUT                          : out  std_logic;
-    TXRESETDONE_OUT                         : out  std_logic
+    TXRESETDONE_OUT                         : out  std_logic;
+    -------------------- Transmit Ports - TX Polarity Control ------------------
+    TXPOLARITY_IN                           : in std_logic
 
 
 );
@@ -408,7 +418,9 @@ begin
         MGTREFCLKTX_IN                  =>      gtx0_mgtrefclkrx_i,
         PLLTXRESET_IN                   =>      tied_to_ground_i,
         TXPLLLKDET_OUT                  =>      open,
-        TXRESETDONE_OUT                 =>      GTX0_TXRESETDONE_OUT
+        TXRESETDONE_OUT                 =>      GTX0_TXRESETDONE_OUT,
+        -------------------- Transmit Ports - TX Polarity Control ------------------
+        TXPOLARITY_IN                   =>      GTX0_TXPOLARITY_IN
 
     );
 
@@ -468,7 +480,9 @@ begin
         MGTREFCLKTX_IN                  =>      gtx1_mgtrefclkrx_i,
         PLLTXRESET_IN                   =>      tied_to_ground_i,
         TXPLLLKDET_OUT                  =>      open,
-        TXRESETDONE_OUT                 =>      GTX1_TXRESETDONE_OUT
+        TXRESETDONE_OUT                 =>      GTX1_TXRESETDONE_OUT,
+        -------------------- Transmit Ports - TX Polarity Control ------------------
+        TXPOLARITY_IN                   =>      GTX1_TXPOLARITY_IN
 
     );
 
@@ -528,7 +542,9 @@ begin
         MGTREFCLKTX_IN                  =>      gtx2_mgtrefclkrx_i,
         PLLTXRESET_IN                   =>      tied_to_ground_i,
         TXPLLLKDET_OUT                  =>      open,
-        TXRESETDONE_OUT                 =>      GTX2_TXRESETDONE_OUT
+        TXRESETDONE_OUT                 =>      GTX2_TXRESETDONE_OUT,
+        -------------------- Transmit Ports - TX Polarity Control ------------------
+        TXPOLARITY_IN                   =>      GTX2_TXPOLARITY_IN
 
     );
 
@@ -588,7 +604,9 @@ begin
         MGTREFCLKTX_IN                  =>      gtx3_mgtrefclkrx_i,
         PLLTXRESET_IN                   =>      tied_to_ground_i,
         TXPLLLKDET_OUT                  =>      open,
-        TXRESETDONE_OUT                 =>      GTX3_TXRESETDONE_OUT
+        TXRESETDONE_OUT                 =>      GTX3_TXRESETDONE_OUT,
+        -------------------- Transmit Ports - TX Polarity Control ------------------
+        TXPOLARITY_IN                   =>      GTX3_TXPOLARITY_IN
 
     );
 

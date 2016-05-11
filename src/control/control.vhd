@@ -30,7 +30,8 @@ port(
     ipb_mosi_i          : in ipb_wbus;
     ipb_miso_o          : out ipb_rbus;
     
-    tk_rx_polarity_o    : out std_logic_vector(3 downto 0)
+    tk_rx_polarity_o    : out std_logic_vector(3 downto 0);
+    tk_tx_polarity_o    : out std_logic_vector(3 downto 0)
 );
 end control;
 
@@ -44,13 +45,17 @@ architecture control_arch of control is
     signal ipb_write_reg_data       : std32_array_t(0 to 15);
     
     signal tk_rx_polarity           : std_logic_vector(3 downto 0) := (others => '0');
+    signal tk_tx_polarity           : std_logic_vector(3 downto 0) := (others => '0');
     
 begin
 
     tk_rx_polarity_o <= tk_rx_polarity;
+    tk_tx_polarity_o <= tk_tx_polarity;
 
     ipb_read_reg_data(0)(3 downto 0) <= tk_rx_polarity;
     tk_rx_polarity                   <= ipb_write_reg_data(0)(3 downto 0);
+    ipb_read_reg_data(1)(3 downto 0) <= tk_tx_polarity;
+    tk_tx_polarity                   <= ipb_write_reg_data(1)(3 downto 0);
 
     --================================--
     -- IPbus
